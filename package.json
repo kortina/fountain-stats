@@ -27,6 +27,7 @@
     "ts-jest": "^29.0.3"
   },
   "dependencies": {
-    "fountain-js": "^1.0.0"
+    "fountain-js": "^1.0.0",
+    "yargs": "^17.6.2"
   }
 }
