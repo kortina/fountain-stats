@@ -2,7 +2,7 @@
     "extends": "@tsconfig/node18/tsconfig.json",
     "compilerOptions": {
         "module": "CommonJS",
-        "outDir": "dist/"
+        "outDir": "out/"
     },
     "exclude": [
         "node_modules",

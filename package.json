@@ -2,17 +2,29 @@
   "name": "fountain-stats",
   "version": "0.0.1",
   "description": "Generate stats on screenplays written in fountain.",
-  "main": "dist/index.js",
+  "main": "out/index.js",
   "bin": {
     "fountain-stats": "./bin/fountain-stats"
   },
   "scripts": {
-    "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "tsc",
+    "lint": "eslint -c .eslintrc.js --ext .ts src",
+    "pretest": "npm run compile",
+    "test": "./node_modules/.bin/jest",
+    "vscode:prepublish": "npm run compile",
+    "watch": "tsc -watch -p ./",
+    "build": "tsc"
   },
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
-    "@types/node": "^18.11.18"
+    "@types/jest": "^29.2.5",
+    "@types/jest-cli": "^24.3.0",
+    "@types/node": "^18.11.18",
+    "babylon": "^6.18.0",
+    "eslint": "^8.31.0",
+    "jest": "^29.3.1",
+    "jest-cli": "^29.3.1",
+    "ts-jest": "^29.0.3"
   },
   "dependencies": {
     "fountain-js": "^1.0.0"

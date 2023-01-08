@@ -6,3 +6,7 @@ import { Fountain } from 'fountain-js';
 let fountain = new Fountain();
 
 console.log(d);
+
+export const foo = () => {
+  return 1;
+};
