@@ -1,30 +1,37 @@
 #!/usr/bin/env node
 import { Fountain } from 'fountain-js';
 import yargs = require('yargs');
+import { readFileSync } from 'fs';
+
 // import { yargs } from 'yargs';
 
+interface Arguments {
+  fountainFile: string;
+}
+
 const main = () => {
-  const argv = yargs
-    .command('lyr', 'Tells whether an year is leap year or not', {
-      year: {
-        description: 'the year to check for',
-        alias: 'y',
-        type: 'number',
-      },
-    })
-    .option('time', {
-      alias: 't',
-      description: 'Tell the present Time',
-      type: 'boolean',
-    })
-    .help()
-    .alias('help', 'h').argv;
+  const opts = yargs.command(
+    '* <fountainFile>',
+    'default command',
+    (yargs) =>
+      yargs.positional('fountainFile', {
+        describe: 'base URL',
+        type: 'string',
+        demandOption: true,
+      }),
+    (argv) => {
+      let fountainFile: string = argv.fountainFile;
+      console.log(`fountainFile: ${fountainFile}`);
+      const text = readFileSync(fountainFile, 'utf-8');
+      //   console.log(text);
+      let fountain = new Fountain();
+      let f = fountain.parse(text, true);
+      console.log(f.tokens);
+    }
+  ).argv;
 
   const d = `${new Date()}`;
   console.log(d);
-
-  let fountain = new Fountain();
-
   console.log(d);
 };
 
