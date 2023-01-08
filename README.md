@@ -8,4 +8,5 @@ Typescript library for generating statistics about screenplays written in founta
 
 npm install --save-dev @types/node
 npm install --save-dev @tsconfig/node18
+npm install fountain-js
 ```

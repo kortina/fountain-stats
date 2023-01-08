@@ -2,5 +2,8 @@
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
     "@types/node": "^18.11.18"
+  },
+  "dependencies": {
+    "fountain-js": "^1.0.0"
   }
 }
