@@ -1,4 +1,15 @@
 {
+  "name": "fountain-stats",
+  "version": "0.0.1",
+  "description": "Generate stats on screenplays written in fountain.",
+  "main": "dist/index.js",
+  "bin": {
+    "fountain-stats": "./bin/fountain-stats"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
     "@types/node": "^18.11.18"
