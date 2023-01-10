@@ -98,6 +98,60 @@ export const calcLines = (token: Token): Number => {
   }
 };
 
+class Scene {
+  rawText: string;
+  ie: string;
+  loc: string | undefined;
+  tod: string | undefined;
+  sceneNumber: string | undefined;
+  numLines: Number;
+
+  constructor(
+    rawText: string,
+    ie: string,
+    loc: string | undefined,
+    tod: string | undefined,
+    sceneNumber: string | undefined
+  ) {
+    this.rawText = rawText;
+    this.ie = ie;
+    this.loc = loc;
+    this.tod = tod;
+    this.sceneNumber = sceneNumber;
+    this.numLines = 0;
+  }
+
+  static fromToken(token: Token): Scene {
+    let rawText = token.text || '';
+    let sceneNumber = token.scene_number;
+    let parts = rawText.split(' - ');
+    let ie = parts[0];
+
+    let loc = undefined;
+    if (parts.length > 1) {
+      loc = parts[1];
+    }
+
+    let tod = undefined;
+    if (parts.length > 2) {
+      tod = parts[2];
+    }
+    return new Scene(rawText, ie, loc, tod, sceneNumber);
+  }
+
+  get row(): string {
+    return [
+      this.ie || '',
+      this.loc || '',
+      this.tod || '',
+      this.sceneNumber || '',
+      this.rawText || '',
+    ]
+      .map((i) => i.replaceAll(/\t/, ''))
+      .join('\t');
+  }
+}
+
 interface Arguments {
   fountainFile: string;
 }
@@ -123,6 +177,8 @@ const main = () => {
         console.log(tokenType(t.type));
         if (tokenIs(t, TokenType.scene_heading)) {
           console.log('-------------------');
+          let scene = Scene.fromToken(t);
+          console.log(scene.row);
         }
       });
       console.log(TokenType['scene_heading'] === TokenType.scene_heading);
