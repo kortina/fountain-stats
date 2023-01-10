@@ -20,11 +20,13 @@
     "@types/jest": "^29.2.5",
     "@types/jest-cli": "^24.3.0",
     "@types/node": "^18.11.18",
+    "@types/word-wrap": "^1.2.1",
     "babylon": "^6.18.0",
     "eslint": "^8.31.0",
     "jest": "^29.3.1",
     "jest-cli": "^29.3.1",
-    "ts-jest": "^29.0.3"
+    "ts-jest": "^29.0.3",
+    "word-wrap": "^1.2.3"
   },
   "dependencies": {
     "fountain-js": "^1.0.0",
